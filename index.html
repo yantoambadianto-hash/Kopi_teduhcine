@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kopi Teduh | Kedai Kopi Independen</title>
+  <meta name="description" content="Kopi Teduh, kedai kopi independen dengan biji dari petani Nusantara, diseduh satu per satu. Lihat menu, jam buka, dan lokasi.">
+  <meta name="theme-color" content="#F4ECDD">
+
+  <!-- Pratinjau saat dibagikan (ganti dengan data kedai kamu) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Kopi Teduh | Kedai Kopi Independen">
+  <meta property="og:description" content="Duduk dulu. Kopinya menyusul.">
+  <!-- <meta property="og:image" content="https://alamat-situsmu/images/og.jpg"> -->
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232A1A11'/%3E%3Cpath d='M22 19v26M22 33l16-14M26 32l14 13' stroke='%23F4ECDD' stroke-width='5' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&family=Instrument+Sans:wght@400..700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+
+  <script>
+    document.documentElement.classList.add('js');
+    try {
+      if (sessionStorage.getItem('kt-intro')) document.documentElement.classList.add('no-intro');
+      sessionStorage.setItem('kt-intro', '1');
+    } catch (e) {}
+  </script>
+  <script src="script.js" defer></script>
+  <script src="cinema.js" defer></script>
+</head>
+
+<body id="top">
+
+  <div class="intro" aria-hidden="true">
+    <span class="intro__scene">Scene 01</span>
+    <span class="intro__mark">Kopi Teduh</span>
+    <span class="intro__count"><b data-count>000</b><i>%</i></span>
+  </div>
+
+  <!-- Lapisan latar tetap: gradasi dan cahaya berubah mengikuti scroll (diatur cinema.js) -->
+  <div class="backdrop" aria-hidden="true">
+    <div class="backdrop__wash"></div>
+    <div class="backdrop__glow backdrop__glow--a"></div>
+    <div class="backdrop__glow backdrop__glow--b"></div>
+  </div>
+  <div class="film-grain" aria-hidden="true"></div>
+
+  <!-- Ikon dipakai ulang lewat <use href="#id"> -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-cup" viewBox="0 0 64 64"><path d="M12 24h34v10a15 15 0 0 1-15 15h-4A15 15 0 0 1 12 34z"/><path d="M46 27h4a6 6 0 0 1 0 12h-5"/><path d="M8 54h42"/></symbol>
+    <symbol id="i-glass" viewBox="0 0 64 64"><path d="M18 14h28l-4 42H22z"/><path d="M20 27h24"/><path d="M37 5l-4 23"/><rect x="24" y="33" width="9" height="9" rx="2"/><rect x="33" y="41" width="8" height="8" rx="2"/></symbol>
+    <symbol id="i-toast" viewBox="0 0 64 64"><circle cx="32" cy="34" r="23"/><path d="M22 31a6 6 0 0 1 4-10 6 6 0 0 1 12 0 6 6 0 0 1 4 10v10H22z"/></symbol>
+    <symbol id="i-croissant" viewBox="0 0 64 64"><path d="M8 41c2-14 12-22 24-22s22 8 24 22c-4 2-8 0-10-4-2 4-8 6-14 6s-12-2-14-6c-2 4-6 2-10 4z"/><path d="M24 21l4 20M40 21l-4 20"/></symbol>
+    <symbol id="i-bowl" viewBox="0 0 64 64"><path d="M8 28h48a24 24 0 0 1-48 0z"/><path d="M20 56h24"/><path d="M40 8L30 26"/></symbol>
+    <symbol id="i-slice" viewBox="0 0 64 64"><path d="M10 38l22-16 22 16v14H10z"/><path d="M10 38h44"/><path d="M26 45h12"/></symbol>
+    <symbol id="i-bean" viewBox="0 0 40 56"><ellipse cx="20" cy="28" rx="16" ry="25" fill="currentColor"/><path d="M20 5c-8 14 8 22 0 46" fill="none" stroke="#F4ECDD" stroke-opacity=".5" stroke-width="2.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-6l-4.5 4v-4H7a3 3 0 0 1-3-3z"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.6"/><path d="M16.8 7.2h.01"/></symbol>
+  </svg>
+
+  <a class="skip" href="#main">Langsung ke konten</a>
+
+  <header class="site-header">
+    <div class="wrap site-header__bar">
+      <a class="brand" href="#top" aria-label="Kopi Teduh, kembali ke atas">Kopi Teduh</a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+        <span class="sr-only">Buka menu navigasi</span>
+        <span class="nav-toggle__bars" aria-hidden="true"></span>
+      </button>
+
+      <nav class="nav" id="primary-nav" aria-label="Utama">
+        <ul class="nav__list">
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#cerita">Cerita</a></li>
+          <li><a href="#kunjungi">Kunjungi</a></li>
+          <li><a href="#kontak">Kontak</a></li>
+        </ul>
+        <!-- Nomor WhatsApp diatur di script.js (SHOP.whatsappNumber). -->
+        <a class="btn btn--primary nav__cta" href="https://wa.me/000000000000" data-wa target="_blank" rel="noopener noreferrer">
+          <svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>
+          Chat WhatsApp
+        </a>
+      </nav>
+    </div>
+    <div class="progress" aria-hidden="true"></div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" aria-labelledby="hero-title" data-dark data-hero>
+      <!-- Latar suasana kedai. Foto memudar di tepinya (lihat .hero__bg di styles.css).
+           Ganti src dengan fotomu sendiri, mis. images/kedai.jpg. Bila foto gagal dimuat,
+           gradasi cahaya lampu di bawahnya tetap tampil. -->
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__photo-bg">
+          <img data-fallback
+               src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&amp;fit=crop&amp;q=60&amp;w=1800"
+               srcset="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&amp;fit=crop&amp;q=60&amp;w=1000 1000w, https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&amp;fit=crop&amp;q=60&amp;w=1800 1800w, https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&amp;fit=crop&amp;q=60&amp;w=2400 2400w"
+               sizes="100vw" width="1800" height="1200" alt="" fetchpriority="high" decoding="async">
+        </div>
+        <div class="hero__lamps"></div>
+        <div class="hero__beams"><i></i><i></i><i></i></div>
+        <canvas class="hero__dust" data-dust></canvas>
+        <div class="hero__shade"></div>
+      </div>
+
+      <div class="wrap hero__grid">
+
+        <div class="hero__copy">
+          <p class="scene scene--hero rise" style="--d:0s"><span class="scene__no">Scene 01</span><span class="scene__line"></span><span class="scene__name">Pembuka</span></p>
+          <h1 class="hero__title" id="hero-title">
+            <span class="hero__line"><span class="hero__line-inner" style="--d:.05s">Duduk dulu.</span></span>
+            <span class="hero__line"><span class="hero__line-inner" style="--d:.2s">Kopinya menyusul.</span></span>
+          </h1>
+          <p class="hero__lede rise" style="--d:.4s">
+            Kedai kopi independen dengan biji dari petani Nusantara, diseduh satu per satu dan disajikan di meja yang tidak terburu-buru.
+          </p>
+          <div class="hero__actions rise" style="--d:.5s">
+            <a class="btn btn--primary" href="#menu">Lihat menu</a>
+            <a class="btn btn--ghost" href="https://wa.me/000000000000" data-wa target="_blank" rel="noopener noreferrer">
+              <svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>
+              Pesan lewat WhatsApp
+            </a>
+          </div>
+          <p class="status rise" style="--d:.6s" data-status data-state="unknown">
+            <span class="status__dot" aria-hidden="true"></span>
+            <span class="status__text"><a href="#kunjungi">Lihat jam buka</a></span>
+          </p>
+        </div>
+
+        <div class="hero__media rise" style="--d:.3s" data-hero-stage>
+          <div class="hero__tilt" data-hero-tilt>
+            <!-- Biji kopi melayang: lapisan kedalaman (--z makin besar = makin dekat) -->
+            <span class="bean bean--a" style="--z:1.1;--r:-24deg" aria-hidden="true"><svg><use href="#i-bean"/></svg></span>
+            <span class="bean bean--b" style="--z:.7;--r:32deg" aria-hidden="true"><svg><use href="#i-bean"/></svg></span>
+            <span class="bean bean--c" style="--z:1.4;--r:12deg" aria-hidden="true"><svg><use href="#i-bean"/></svg></span>
+            <span class="bean bean--d" style="--z:.5;--r:-48deg" aria-hidden="true"><svg><use href="#i-bean"/></svg></span>
+
+            <!-- Ganti ilustrasi ini dengan foto: taruh <img src="images/hero.jpg" alt="..."> di dalam <figure> -->
+            <figure class="photo hero__photo tone-sage">
+              <svg class="hero__cup" viewBox="0 0 224 240" aria-hidden="true">
+                <g class="hero__steam">
+                  <path d="M92 82c-12-14 12-26 0-42"/>
+                  <path d="M114 76c-12-14 12-26 0-44"/>
+                  <path d="M136 82c-12-14 12-26 0-42"/>
+                </g>
+                <ellipse cx="112" cy="98" rx="56" ry="8"/>
+                <path class="hero__cup-body" d="M56 98v34a56 56 0 0 0 112 0V98"/>
+                <path d="M168 110h10a22 22 0 0 1 0 44h-16"/>
+                <ellipse cx="112" cy="208" rx="90" ry="10"/>
+              </svg>
+            </figure>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== MENU ===== -->
+    <section class="section menu" id="menu" aria-labelledby="menu-title">
+      <div class="wrap">
+        <p class="scene reveal"><span class="scene__no">Scene 02</span><span class="scene__line" data-scrub="in"></span><span class="scene__name">Menu</span></p>
+        <header class="section__head reveal">
+          <h2 class="section__title" id="menu-title" data-split>Dari bar dan dapur <em>kecil</em> kami</h2>
+          <p class="section__intro">Kopi dari biji pilihan, minuman penyegar, dan makanan rumahan yang cocok ditemani obrolan. Harga dalam rupiah.</p>
+        </header>
+
+        <div class="menu__filters" role="group" aria-label="Pilih kategori menu">
+          <button class="chip" type="button" data-filter="kopi" aria-pressed="false">Kopi</button>
+          <button class="chip" type="button" data-filter="non-kopi" aria-pressed="false">Non-kopi</button>
+          <button class="chip" type="button" data-filter="makanan" aria-pressed="false">Makanan</button>
+          <button class="chip" type="button" data-filter="camilan" aria-pressed="false">Camilan</button>
+          <button class="chip" type="button" data-filter="all" aria-pressed="false">Semua</button>
+        </div>
+        <p class="sr-only" id="menu-status" role="status" aria-live="polite"></p>
+
+        <!--
+          Foto menu: sebagian sudah memakai foto Unsplash (lihat kredit di footer). Untuk memakai fotomu sendiri, ganti alamat src pada <img>, atau taruh gambar di dalam <figure>:
+          <figure class="photo tone-latte"><img src="images/espresso.jpg" alt="Segelas espresso"> ... </figure>
+          Foto otomatis menutupi ilustrasi. Rasio yang disarankan: 4:3, minimal 800 px lebar.
+        -->
+        <ul class="menu__grid">
+
+          <li class="dish reveal" data-category="kopi">
+            <figure class="photo tone-latte"><img src="https://images.unsplash.com/photo-1595928642581-f50f4f3453a5?auto=format&amp;fit=crop&amp;q=70&amp;w=800" srcset="https://images.unsplash.com/photo-1595928642581-f50f4f3453a5?auto=format&amp;fit=crop&amp;q=70&amp;w=480 480w, https://images.unsplash.com/photo-1595928642581-f50f4f3453a5?auto=format&amp;fit=crop&amp;q=70&amp;w=800 800w, https://images.unsplash.com/photo-1595928642581-f50f4f3453a5?auto=format&amp;fit=crop&amp;q=70&amp;w=1200 1200w" sizes="(min-width: 64rem) 22rem, (min-width: 40rem) 45vw, 7rem" width="800" height="600" alt="Cangkir keramik putih berisi espresso di atas meja kayu" loading="lazy" decoding="async"><svg class="photo__icon" aria-hidden="true"><use href="#i-cup"/></svg></figure>
+            <div class="dish__body">
+              <div class="dish__head"><h3 class="dish__name">Espresso</h3><p class="dish__price">Rp 18.000</p></div>
+              <p class="dish__desc">Satu shot pekat dengan crema tebal. Pahit manis yang lurus.</p>
+            </div>
+          </li>
+          <li class="dish reveal" data-category="kopi">
+            <figure class="photo tone-mocha"><img src="https://images.unsplash.com/photo-1767471716700-2b3aa77b1ab6?auto=format&amp;fit=crop&amp;q=70&amp;w=800" srcset="https://images.unsplash.com/photo-1767471716700-2b3aa77b1ab6?auto=format&amp;fit=crop&amp;q=70&amp;w=480 480w, https://images.unsplash.com/photo-1767471716700-2b3aa77b1ab6?auto=format&amp;fit=crop&amp;q=70&amp;w=800 800w, https://images.unsplash.com/photo-1767471716700-2b3aa77b1ab6?auto=format&amp;fit=crop&amp;q=70&amp;w=1200 1200w" sizes="(min-width: 64rem) 22rem, (min-width: 40rem) 45vw, 7rem" width="800" height="600" alt="Tangan memegang segelas kopi susu dingin" loading="lazy" decoding="async"><svg class="photo__icon" aria-hidden="true"><use href="#i-glass"/></svg></figure>
+            <div class="dish__body">
+              <div class="dish__head"><h3 class="dish__name">Kopi Susu Gula Aren</h3><p class="dish__price">Rp 25.000</p></div>
+              <p class="dish__desc">Espresso, susu segar, dan gula aren cair. Disajikan dingin atau panas.</p>
+            </div>
+          </li>
+          <li class="dish reveal" data-category="kopi">
+            <figure class="photo tone-forest"><img src="https://images.unsplash.com/photo-1657040111323-0aa59a7af59d?auto=format&amp;fit=crop&amp;q=70&amp;w=800" srcset="https://images.unsplash.com/photo-1657040111323-0aa59a7af59d?auto=format&amp;fit=crop&amp;q=70&amp;w=480 480w, https://images.unsplash.com/photo-1657040111323-0aa59a7af59d?auto=format&amp;fit=crop&amp;q=70&amp;w=800 800w, https://images.unsplash.com/photo-1657040111323-0aa59a7af59d?auto=format&amp;fit=crop&amp;q=70&amp;w=1200 1200w" sizes="(min-width: 64rem) 22rem, (min-width: 40rem) 45vw, 7rem" width="800" height="600" alt="Kopi diseduh manual dengan metode pour over" loading="lazy" decoding="async"><svg class="photo__icon" aria-hidden="true"><use href="#i-cup"/></svg></figure>
+            <div class="dish__body">
+              <div class="dish__head"><h3 class="dish__name">V60 Single Origin</h3><p class="dish__price">Rp 32.000</p></div>
+              <p class="dish__desc">Seduhan manual dari biji yang berganti tiap pekan. Tanya baristanya.</p>
+            </div>
+          </li>
+          <li class="dish reveal" data-category="kopi">
+            <figure class="photo tone-crema"><img src="https://images.unsplash.com/photo-1691616082780-cd4bdde78197?auto=format&amp;fit=crop&amp;q=70&amp;w=800" srcset="https://images.unsplash.com/photo-1691616082780-cd4bdde78197?auto=format&amp;fit=crop&amp;q=70&amp;w=480 480w, https://images.unsplash.com/photo-1691616082780-cd4bdde78197?auto=format&amp;fit=crop&amp;q=70&amp;w=800 800w, https://images.unsplash.com/photo-1691616082780-cd4bdde78197?auto=format&amp;fit=crop&amp;q=70&amp;w=1200 1200w" sizes="(min-width: 64rem) 22rem, (min-width: 40rem) 45vw, 7rem" width="800" height="600" alt="Secangkir cappuccino dengan latte art di atas meja" loading="lazy" decoding="async"><svg class="photo__icon" aria-hidden="true"><use href="#i-cup"/></svg></figure>
+            <div class="dish__body">
+              <div class="dish__head"><h3 class="dish__name">Cappuccino</h3><p class="dish__price">Rp 27.000</p></div>
+              <p class="dish__desc">Espresso, susu hangat, dan busa tipis yang lembut.</p>
+            </div>
+          </li>
+
+          <li class="dish reveal" data-category="non-kopi">
+            <figure class="photo tone-mocha"><svg class="photo__icon" aria-hidden="true"><use href="#i-cup"/></svg></figure>
+            <div class="dish__body">
+              <div class="dish__head"><h3 class="dish__name">Teh Tarik Rempah</h3><p class="dish__price">Rp 22.000</p></div>
+              <p class="dish__desc">Teh hitam pekat, susu, dengan sejumput kayu manis dan jahe.</p>
+            </div>
+          </li>
+          <li class="dish reveal" data-category="non-kopi">
+            <figure class="photo tone-sage"><img src="https://images.unsplash.com/photo-1717603545758-88cc454db69b?auto=format&amp;fit=crop&amp;q=70&amp;w=800" srcset="https://images.unsplash.com/photo-1717603545758-88cc454db69b?auto=format&amp;fit=crop&amp;q=70&amp;w=480 480w, https://images.unsplash.com/photo-1717603545758-88cc454db69b?auto=format&amp;fit=crop&amp;q=70&amp;w=800 800w, https://images.unsplash.com/photo-1717603545758-88cc454db69b?auto=format&amp;fit=crop&amp;q=70&amp;w=1200 1200w" sizes="(min-width: 64rem) 22rem, (min-width: 40rem) 45vw, 7rem" width="800" height="600" alt="Matcha latte dingin dalam gelas di atas meja kayu" loading="lazy" decoding="async"><svg class="photo__icon" aria-hidden="true"><use href="#i-glass"/></svg></figure>
+            <div class="dish__body">
+              <div class="dish__head"><h3 class="dish__name">Matcha Latte</h3><p class="dish__price">Rp 28.000</p></div>
+              <p class="dish__desc">Matcha dengan susu dingin. Tidak terlalu manis.</p>
+            </div>
+          </li>
+          <li class="dish reveal" data-category="non-kopi">
+            <figure class="photo tone-forest"><img src="https://images.unsplash.com/photo-1637572815755-c4b80092dce1?auto=format&amp;fit=crop&amp;q=70&amp;w=800" srcset="https://images.unsplash.com/photo-1637572815755-c4b80092dce1?auto=format&amp;fit=crop&amp;q=70&amp;w=480 480w, https://images.unsplash.com/photo-1637572815755-c4b80092dce1?auto=format&amp;fit=crop&amp;q=70&amp;w=800 800w, https://images.unsplash.com/photo-1637572815755-c4b80092dce1?auto=format&amp;fit=crop&amp;q=70&amp;w=1200 1200w" sizes="(min-width: 64rem) 22rem, (min-width: 40rem) 45vw, 7rem" width="800" height="600" alt="Cokelat panas dengan marshmallow di atas tatakan" loading="lazy" decoding="async"><svg class="photo__icon" aria-hidden="true"><use href="#i-cup"/></svg></figure>
+            <div class="dish__body">
+              <div class="dish__head"><h3 class="dish__name">Cokelat Panas Pekat</h3><p class="dish__price">Rp 26.000</p></div>
+              <p class="dish__desc">Cokelat batang dilebur dengan susu. Kental dan hangat.</p>
+            </div>
+          </li>
+          <li class="dish reveal" data-category="non-kopi">
+            <figure class="photo tone-latte"><svg class="photo__icon" aria-hidden="true"><use href="#i-glass"/></svg></figure>
+            <div class="dish__body">
+              <div class="dish__head"><h3 class="dish__name">Es Jeruk Serai</h3><p class="dish__price">Rp 20.000</p></div>
+              <p class="dish__desc">Jeruk peras, serai, dan sedikit madu. Segar untuk siang hari.</p>
+            </div>
+          </li>
+
+          <li class="dish reveal" data-category="makanan">
+            <figure class="photo tone-crema"><svg class="photo__icon" aria-hidden="true"><use href="#i-toast"/></svg></figure>
+            <div class="dish__body">
+              <div class="dish__head"><h3 class="dish__name">Roti Bakar Srikaya</h3><p class="dish__price">Rp 24.000</p></div>
+              <p class="dish__desc">Roti tebal dibakar renyah, diolesi srikaya dan mentega.</p>
+            </div>
+          </li>
+          <li class="dish reveal" data-category="makanan">
+            <figure class="photo tone-mocha"><svg class="photo__icon" aria-hidden="true"><use href="#i-bowl"/></svg></figure>
+            <div class="dish__body">
+              <div class="dish__head"><h3 class="dish__name">Nasi Goreng Teduh</h3><p class="dish__price">Rp 34.000</p></div>
+              <p class="dish__desc">Nasi goreng bumbu rumahan dengan telur mata sapi dan acar.</p>
+            </div>
+          </li>
+          <li class="dish reveal" data-category="makanan">
+            <figure class="photo tone-latte"><img src="https://images.unsplash.com/photo-1702090888946-d330cd452f5e?auto=format&amp;fit=crop&amp;q=70&amp;w=800" srcset="https://images.unsplash.com/photo-1702090888946-d330cd452f5e?auto=format&amp;fit=crop&amp;q=70&amp;w=480 480w, https://images.unsplash.com/photo-1702090888946-d330cd452f5e?auto=format&amp;fit=crop&amp;q=70&amp;w=800 800w, https://images.unsplash.com/photo-1702090888946-d330cd452f5e?auto=format&amp;fit=crop&amp;q=70&amp;w=1200 1200w" sizes="(min-width: 64rem) 22rem, (min-width: 40rem) 45vw, 7rem" width="800" height="600" alt="Croissant di atas piring bersama sebotol madu" loading="lazy" decoding="async"><svg class="photo__icon" aria-hidden="true"><use href="#i-croissant"/></svg></figure>
+            <div class="dish__body">
+              <div class="dish__head"><h3 class="dish__name">Croissant Mentega</h3><p class="dish__price">Rp 26.000</p></div>
+              <p class="dish__desc">Berlapis, renyah di luar, lembut di dalam. Dihangatkan sebelum disajikan.</p>
+            </div>
+          </li>
+          <li class="dish reveal" data-category="makanan">
+            <figure class="photo tone-sage"><svg class="photo__icon" aria-hidden="true"><use href="#i-toast"/></svg></figure>
+            <div class="dish__body">
+              <div class="dish__head"><h3 class="dish__name">Sandwich Telur Dadar</h3><p class="dish__price">Rp 28.000</p></div>
+              <p class="dish__desc">Telur dadar tebal, selada, dan sambal tomat di roti panggang.</p>
+            </div>
+          </li>
+
+          <li class="dish reveal" data-category="camilan">
+            <figure class="photo tone-crema"><img src="https://images.unsplash.com/photo-1762941904142-9d91ca413e66?auto=format&amp;fit=crop&amp;q=70&amp;w=800" srcset="https://images.unsplash.com/photo-1762941904142-9d91ca413e66?auto=format&amp;fit=crop&amp;q=70&amp;w=480 480w, https://images.unsplash.com/photo-1762941904142-9d91ca413e66?auto=format&amp;fit=crop&amp;q=70&amp;w=800 800w, https://images.unsplash.com/photo-1762941904142-9d91ca413e66?auto=format&amp;fit=crop&amp;q=70&amp;w=1200 1200w" sizes="(min-width: 64rem) 22rem, (min-width: 40rem) 45vw, 7rem" width="800" height="600" alt="Pisang goreng bertabur gula cokelat di atas piring" loading="lazy" decoding="async"><svg class="photo__icon" aria-hidden="true"><use href="#i-bowl"/></svg></figure>
+            <div class="dish__body">
+              <div class="dish__head"><h3 class="dish__name">Pisang Goreng Madu</h3><p class="dish__price">Rp 20.000</p></div>
+              <p class="dish__desc">Pisang kepok goreng renyah, disiram madu.</p>
+            </div>
+          </li>
+          <li class="dish reveal" data-category="camilan">
+            <figure class="photo tone-forest"><svg class="photo__icon" aria-hidden="true"><use href="#i-bowl"/></svg></figure>
+            <div class="dish__body">
+              <div class="dish__head"><h3 class="dish__name">Kentang Goreng Rempah</h3><p class="dish__price">Rp 22.000</p></div>
+              <p class="dish__desc">Kentang goreng dengan taburan bumbu rempah dan saus sambal.</p>
+            </div>
+          </li>
+          <li class="dish reveal" data-category="camilan">
+            <figure class="photo tone-mocha"><img src="https://images.unsplash.com/photo-1717768024023-73768e73f630?auto=format&amp;fit=crop&amp;q=70&amp;w=800" srcset="https://images.unsplash.com/photo-1717768024023-73768e73f630?auto=format&amp;fit=crop&amp;q=70&amp;w=480 480w, https://images.unsplash.com/photo-1717768024023-73768e73f630?auto=format&amp;fit=crop&amp;q=70&amp;w=800 800w, https://images.unsplash.com/photo-1717768024023-73768e73f630?auto=format&amp;fit=crop&amp;q=70&amp;w=1200 1200w" sizes="(min-width: 64rem) 22rem, (min-width: 40rem) 45vw, 7rem" width="800" height="600" alt="Brownies cokelat di atas piring putih" loading="lazy" decoding="async"><svg class="photo__icon" aria-hidden="true"><use href="#i-slice"/></svg></figure>
+            <div class="dish__body">
+              <div class="dish__head"><h3 class="dish__name">Brownies Kopi</h3><p class="dish__price">Rp 22.000</p></div>
+              <p class="dish__desc">Brownies padat beraroma kopi, disajikan dengan sedikit krim.</p>
+            </div>
+          </li>
+          <li class="dish reveal" data-category="camilan">
+            <figure class="photo tone-sage"><svg class="photo__icon" aria-hidden="true"><use href="#i-slice"/></svg></figure>
+            <div class="dish__body">
+              <div class="dish__head"><h3 class="dish__name">Pukis Keju</h3><p class="dish__price">Rp 18.000</p></div>
+              <p class="dish__desc">Kue pukis hangat dengan keju parut di atasnya.</p>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== JEDA (foto biji kopi, layar penuh, tepi memudar) ===== -->
+    <section class="band" aria-labelledby="band-title">
+      <div class="band__panel on-dark" data-band>
+        <img class="band__img" data-parallax="0.14"
+             src="https://images.unsplash.com/photo-1606486544554-164d98da4889?auto=format&amp;fit=crop&amp;q=60&amp;w=1600"
+             srcset="https://images.unsplash.com/photo-1606486544554-164d98da4889?auto=format&amp;fit=crop&amp;q=60&amp;w=800 800w, https://images.unsplash.com/photo-1606486544554-164d98da4889?auto=format&amp;fit=crop&amp;q=60&amp;w=1600 1600w, https://images.unsplash.com/photo-1606486544554-164d98da4889?auto=format&amp;fit=crop&amp;q=60&amp;w=2400 2400w"
+             sizes="100vw" width="1600" height="1067" alt="" loading="lazy" decoding="async">
+        <div class="wrap band__wrap">
+          <div class="band__content" data-scrub="inout">
+            <p class="scene"><span class="scene__no">Scene 03</span><span class="scene__line" data-scrub="in"></span><span class="scene__name">Jeda</span></p>
+            <h2 class="band__title" id="band-title" data-split>Kopi yang baik tidak perlu <em>terburu-buru.</em></h2>
+            <p>Satu gelas diseduh dalam satu waktu, di meja yang cukup lega untuk diam sebentar.</p>
+            <a class="btn btn--cream" href="#cerita">Baca cerita kami</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SEHARI (pinned: scroll turun, kedai bergeser dari pagi ke malam) =====
+         Tanpa JS, di ponsel, atau saat "kurangi gerak" aktif, bagian ini tampil sebagai daftar kartu biasa. -->
+    <section class="day" id="sehari" aria-labelledby="day-title" data-day>
+      <div class="day__pin" data-day-pin>
+        <div class="day__sticky" data-day-sticky>
+          <div class="day__orb" data-day-orb aria-hidden="true"></div>
+          <div class="wrap day__head">
+            <p class="scene"><span class="scene__no">Scene 04</span><span class="scene__line" data-scrub="in"></span><span class="scene__name">Sehari</span></p>
+            <h2 class="section__title" id="day-title" data-split>Sehari di <em>Kopi Teduh</em></h2>
+            <div class="day__meter" aria-hidden="true">
+              <span class="day__clock" data-day-clock>07.00</span>
+              <span class="day__bar"><i data-day-bar></i></span>
+            </div>
+          </div>
+          <ol class="day__track" data-day-track>
+            <li class="slot slot--pagi">
+              <time class="slot__time" datetime="07:00">07.00</time>
+              <h3 class="slot__title">Pagi, mesin menyala</h3>
+              <p>Lampu bar dinyalakan, mesin espresso dipanaskan, dan roti pertama masuk oven. Cangkir pertama selalu untuk kursi dekat jendela.</p>
+            </li>
+            <li class="slot slot--siang">
+              <time class="slot__time" datetime="12:00">12.00</time>
+              <h3 class="slot__title">Siang, meja penuh</h3>
+              <p>Laptop terbuka, obrolan pendek, dan V60 yang diseduh satu per satu. Kipas angin berputar pelan di atas kepala.</p>
+            </li>
+            <li class="slot slot--sore">
+              <time class="slot__time" datetime="17:00">17.00</time>
+              <h3 class="slot__title">Sore, cahaya jingga</h3>
+              <p>Matahari masuk miring lewat jendela. Waktunya brownies hangat dan segelas kopi susu gula aren yang dingin.</p>
+            </li>
+            <li class="slot slot--malam">
+              <time class="slot__time" datetime="21:00">21.00</time>
+              <h3 class="slot__title">Malam, lampu kuning</h3>
+              <p>Kedai mulai lengang. Obrolan makin panjang, dan tidak ada yang buru-buru pulang.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CERITA ===== -->
+    <section class="section about" id="cerita" aria-labelledby="about-title">
+      <div class="wrap about__grid">
+
+        <div class="about__media reveal">
+          <!-- Foto memudar di tepinya (bukan kotak bertepi tegas). Ganti src dengan fotomu sendiri. -->
+          <figure class="photo photo--tall photo--soft tone-forest"><img data-fallback data-scrub-img
+               src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&amp;fit=crop&amp;q=60&amp;w=1000"
+               srcset="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&amp;fit=crop&amp;q=60&amp;w=600 600w, https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&amp;fit=crop&amp;q=60&amp;w=1000 1000w, https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&amp;fit=crop&amp;q=60&amp;w=1400 1400w"
+               sizes="(min-width: 56rem) 30rem, 90vw" width="1000" height="1250" alt="Suasana di dalam kedai kopi dengan lampu hangat" loading="lazy" decoding="async"><svg class="photo__icon" aria-hidden="true"><use href="#i-cup"/></svg></figure>
+          <figure class="photo photo--inset tone-latte" data-parallax="-0.06"><svg class="photo__icon" aria-hidden="true"><use href="#i-glass"/></svg></figure>
+        </div>
+
+        <div class="about__text reveal" data-delay="120">
+          <p class="scene"><span class="scene__no">Scene 05</span><span class="scene__line" data-scrub="in"></span><span class="scene__name">Cerita</span></p>
+          <h2 class="section__title" id="about-title" data-split>Kedai kecil dengan kursi yang <em>tidak buru-buru</em></h2>
+          <p>Kopi Teduh dimulai dari satu mesin espresso dan keyakinan sederhana: kopi yang enak tidak perlu terburu-buru. Kami menyeduh gelas demi gelas, dan menyiapkan meja yang cukup lega untuk laptop, buku, atau obrolan panjang.</p>
+          <p>Biji kopi kami datang dari petani di berbagai daerah di Indonesia, dan pilihannya berganti mengikuti musim panen. Makanannya dimasak di dapur kecil di belakang bar, dari resep rumahan yang kami rapikan sedikit.</p>
+
+          <ul class="principles">
+            <li>
+              <h3>Biji dari petani Nusantara</h3>
+              <p>Kami memilih dari beberapa daerah dan mengganti pilihan sesuai panen.</p>
+            </li>
+            <li>
+              <h3>Diseduh satu per satu</h3>
+              <p>Setiap gelas dibuat saat dipesan, bukan disiapkan di muka.</p>
+            </li>
+            <li>
+              <h3>Tempat duduk yang bikin betah</h3>
+              <p>Colokan di banyak meja, kipas angin yang pelan, dan tidak ada yang mengusir sebelum tutup.</p>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== KUNJUNGI ===== -->
+    <section class="section visit" id="kunjungi" aria-labelledby="visit-title">
+      <div class="wrap visit__grid">
+
+        <div class="visit__hours reveal">
+          <p class="scene"><span class="scene__no">Scene 06</span><span class="scene__line" data-scrub="in"></span><span class="scene__name">Kunjungi</span></p>
+          <h2 class="section__title" id="visit-title" data-split>Mampir <em>kapan saja</em></h2>
+          <p class="section__intro">Jam buka bisa berubah saat hari libur. Kabari kami lewat WhatsApp kalau mau memastikan.</p>
+
+          <!-- Sumber tunggal jam buka: ubah data-open / data-close (format 24 jam, HH:MM).
+               Hapus data-open dan data-close pada baris untuk menandai hari libur. -->
+          <table class="hours">
+            <caption class="sr-only">Jam buka per hari</caption>
+            <tbody>
+              <tr data-day="1" data-open="07:00" data-close="22:00"><th scope="row">Senin</th><td>07.00 sampai 22.00</td></tr>
+              <tr data-day="2" data-open="07:00" data-close="22:00"><th scope="row">Selasa</th><td>07.00 sampai 22.00</td></tr>
+              <tr data-day="3" data-open="07:00" data-close="22:00"><th scope="row">Rabu</th><td>07.00 sampai 22.00</td></tr>
+              <tr data-day="4" data-open="07:00" data-close="22:00"><th scope="row">Kamis</th><td>07.00 sampai 22.00</td></tr>
+              <tr data-day="5" data-open="07:00" data-close="23:00"><th scope="row">Jumat</th><td>07.00 sampai 23.00</td></tr>
+              <tr data-day="6" data-open="08:00" data-close="23:00"><th scope="row">Sabtu</th><td>08.00 sampai 23.00</td></tr>
+              <tr data-day="0" data-open="08:00" data-close="21:00"><th scope="row">Minggu</th><td>08.00 sampai 21.00</td></tr>
+            </tbody>
+          </table>
+          <p class="status" data-status data-state="unknown">
+            <span class="status__dot" aria-hidden="true"></span>
+            <span class="status__text">Waktu setempat: WIB</span>
+          </p>
+        </div>
+
+        <div class="visit__place reveal" data-delay="120">
+          <!-- Placeholder peta. Ganti dengan tautan Google Maps kedaimu di tombol di bawah. -->
+          <div class="map">
+            <svg viewBox="0 0 400 250" role="img" aria-label="Ilustrasi peta lokasi kedai (placeholder)" preserveAspectRatio="xMidYMid slice">
+              <rect width="400" height="250" fill="#DCE0C8"/>
+              <path d="M-10 190c60-30 90-10 150-40s70-90 150-100 110 20 130 10v140H-10z" fill="#C3CCAB"/>
+              <g stroke="#F4ECDD" stroke-linecap="round" fill="none">
+                <path d="M-10 70L410 120" stroke-width="12"/>
+                <path d="M140 -10L190 260" stroke-width="12"/>
+                <path d="M-10 200L410 190" stroke-width="7"/>
+                <path d="M290 -10L260 260" stroke-width="7"/>
+                <path d="M60 -10L90 260" stroke-width="5"/>
+              </g>
+              <g transform="translate(176 92)">
+                <path d="M0 0c-14-18-24-28-24-42a24 24 0 0 1 48 0c0 14-10 24-24 42z" fill="#2A1A11"/>
+                <circle cy="-42" r="9" fill="#F4ECDD"/>
+              </g>
+            </svg>
+          </div>
+
+          <address class="address">
+            <strong class="address__name">Kopi Teduh</strong>
+            Jl. Lembayung Senja No. 12<br>
+            Kelurahan Sendang Rindu, Kota Teduhan<br>
+            Provinsi Nusa Senja, Indonesia 00000
+          </address>
+          <a class="btn btn--ghost" href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer" data-maps>Buka di Google Maps</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== KONTAK ===== -->
+    <section class="section contact on-dark" id="kontak" aria-labelledby="contact-title">
+      <div class="wrap contact__grid">
+
+        <div class="contact__intro reveal">
+          <p class="scene"><span class="scene__no">Scene 07</span><span class="scene__line" data-scrub="in"></span><span class="scene__name">Kontak</span></p>
+          <h2 class="section__title" id="contact-title" data-split>Mau pesan atau <em>tanya dulu?</em></h2>
+          <p class="section__intro">Kirim pesan lewat WhatsApp. Kami balas saat kedai buka.</p>
+          <a class="btn btn--cream" href="https://wa.me/000000000000" data-wa target="_blank" rel="noopener noreferrer">
+            <svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>
+            Chat WhatsApp
+          </a>
+        </div>
+
+        <ul class="contact__list reveal" data-delay="120">
+          <li>
+            <a href="https://wa.me/000000000000" data-wa target="_blank" rel="noopener noreferrer">
+              <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
+              <span class="contact__label">WhatsApp dan telepon</span>
+              <span class="contact__value">+00 000-0000-0000</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:halo@kopiteduh.example">
+              <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
+              <span class="contact__label">Email</span>
+              <span class="contact__value">halo@kopiteduh.example</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+              <svg class="icon" aria-hidden="true"><use href="#i-camera"/></svg>
+              <span class="contact__label">Instagram</span>
+              <span class="contact__value">@kopiteduh.fiktif</span>
+            </a>
+          </li>
+        </ul>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer on-dark">
+    <div class="wrap site-footer__bar">
+      <p class="site-footer__brand">Kopi Teduh</p>
+      <nav aria-label="Footer">
+        <ul class="site-footer__nav">
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#cerita">Cerita</a></li>
+          <li><a href="#kunjungi">Kunjungi</a></li>
+          <li><a href="#kontak">Kontak</a></li>
+        </ul>
+      </nav>
+      <details class="credits">
+        <summary>Kredit foto</summary>
+        <p>Foto dari Unsplash, dipakai sesuai <a href="https://unsplash.com/license" target="_blank" rel="noopener noreferrer">Unsplash License</a>.</p>
+        <ul>
+          <li>Espresso: <a href="https://unsplash.com/photos/white-ceramic-cup-on-brown-wooden-table-KWZ-rg9o76A" target="_blank" rel="noopener noreferrer">Tabitha Turner</a></li>
+          <li>Kopi susu: <a href="https://unsplash.com/photos/hand-holding-a-glass-of-iced-coffee-with-cream-LJPAmUnE-QM" target="_blank" rel="noopener noreferrer">Rob Wingate</a></li>
+          <li>V60: <a href="https://unsplash.com/photos/9ok3UPT8UuY" target="_blank" rel="noopener noreferrer">Jamie Long</a></li>
+          <li>Cappuccino: <a href="https://unsplash.com/photos/a-cappuccino-sits-on-a-table-next-to-two-boxes-of-coffee-fxsHxFwqngY" target="_blank" rel="noopener noreferrer">Peyman Shojaei</a></li>
+          <li>Matcha latte: <a href="https://unsplash.com/photos/N1rmKN_EOaA" target="_blank" rel="noopener noreferrer">Olena Bohovyk</a></li>
+          <li>Cokelat panas: <a href="https://unsplash.com/photos/NtmNhrdfs-o" target="_blank" rel="noopener noreferrer">Elena Leya</a></li>
+          <li>Croissant: <a href="https://unsplash.com/photos/a-croissant-sitting-on-a-plate-next-to-a-jar-of-honey-K_Fey0KMSqk" target="_blank" rel="noopener noreferrer">Jess Bailey</a></li>
+          <li>Pisang goreng: <a href="https://unsplash.com/photos/4oGKCdrBDzE" target="_blank" rel="noopener noreferrer">Bimo Agmi</a></li>
+          <li>Brownies: <a href="https://unsplash.com/photos/a-white-plate-topped-with-brownies-on-top-of-a-table-Pv7mvanWTLk" target="_blank" rel="noopener noreferrer">Ebru Doğan</a></li>
+          <li>Suasana kedai (hero dan cerita): <a href="https://unsplash.com/" target="_blank" rel="noopener noreferrer">Unsplash</a></li>
+          <li>Biji kopi: <a href="https://unsplash.com/photos/brown-coffee-beans-on-black-surface-fmc-tFMMiBs" target="_blank" rel="noopener noreferrer">Łukasz Rawa</a></li>
+        </ul>
+      </details>
+      <p class="site-footer__fine">&copy; <span data-year>2026</span> Kopi Teduh. Proyek portofolio. Semua nama, tempat, dan kontak bersifat fiktif.</p>
+    </div>
+  </footer>
+
+  <a class="btn btn--primary wa-float" href="https://wa.me/000000000000" data-wa target="_blank" rel="noopener noreferrer" aria-label="Chat lewat WhatsApp">
+    <svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>
+    <span class="wa-float__text">WhatsApp</span>
+  </a>
+
+</body>
+</html>
